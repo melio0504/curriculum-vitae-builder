@@ -7,5 +7,23 @@ import './styles/CV.css'
 export default function App() {
   return (
     <CV />
+    <main className="cv-builder-layout">
+      <Form
+        cvData={cvData}
+        onFieldChange={handleFieldChange}
+        onNestedChange={handleNestedChange}
+        onBulletsChange={handleBulletsChange}
+        onSkillsChange={handleSkillsChange}
+        optionalSections={optionalSections}
+        onToggleOptionalSection={handleOptionalSectionToggle}
+      />
+      <CV
+        cvData={cvData}
+        previewRef={previewRef}
+        onExport={exportToPDF}
+        isExporting={isExporting}
+        optionalSections={optionalSections}
+      />
+    </main>
   )
 }
