@@ -80,6 +80,15 @@ const initialData = {
 }
 
 export default function App() {
+  const [cvData, setCvData] = useState(initialData)
+  const [isExporting, setIsExporting] = useState(false)
+  const [optionalSections, setOptionalSections] = useState({
+    studyAbroad: true,
+    educationEntry3: true,
+    organizationEntry: true,
+    leadership: true,
+    skills: true,
+  })
   return (
     <main className="cv-builder-layout">
       <Form
