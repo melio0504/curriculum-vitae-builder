@@ -89,6 +89,45 @@ export default function App() {
     leadership: true,
     skills: true,
   })
+  const previewRef = useRef(null)
+
+  const handleFieldChange = (field, value) => {
+    setCvData((prev) => ({ ...prev, [field]: value }))
+  }
+
+  const handleNestedChange = (section, index, field, value) => {
+    setCvData((prev) => {
+      const updatedSection = [...prev[section]]
+      updatedSection[index] = { ...updatedSection[index], [field]: value }
+      return { ...prev, [section]: updatedSection }
+    })
+  }
+
+  const handleBulletsChange = (section, index, value) => {
+    const bullets = value
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean)
+
+    setCvData((prev) => {
+      const updatedSection = [...prev[section]]
+      updatedSection[index] = { ...updatedSection[index], bullets }
+      return { ...prev, [section]: updatedSection }
+    })
+  }
+
+  const handleSkillsChange = (field, value) => {
+    setCvData((prev) => ({
+      ...prev,
+      skills: { ...prev.skills, [field]: value },
+    }))
+  }
+
+  const handleOptionalSectionToggle = (sectionKey) => {
+    setOptionalSections((prev) => ({ ...prev, [sectionKey]: !prev[sectionKey] }))
+  }
+
+  const exportToPDF = async () => {
   return (
     <main className="cv-builder-layout">
       <Form
