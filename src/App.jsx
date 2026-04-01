@@ -6,7 +6,6 @@ import './styles/CV.css'
 
 export default function App() {
   return (
-    <CV />
     <main className="cv-builder-layout">
       <Form
         cvData={cvData}
