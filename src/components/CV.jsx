@@ -65,9 +65,12 @@ export default function CV({
                 <span>{item.dates}</span>
               </div>
               <ul>
-                {item.bullets.map((bullet, bulletIndex) => (
-                  <li key={`experience-${index}-bullet-${bulletIndex}`}>{bullet}</li>
-                ))}
+                {item.bullets
+                  .map((bullet) => bullet.trim())
+                  .filter(Boolean)
+                  .map((bullet, bulletIndex) => (
+                    <li key={`experience-${index}-bullet-${bulletIndex}`}>{bullet}</li>
+                  ))}
               </ul>
             </div>
             )
@@ -88,9 +91,12 @@ export default function CV({
                   <span>{item.dates}</span>
                 </div>
                 <ul>
-                  {item.bullets.map((bullet, bulletIndex) => (
-                    <li key={`leadership-${index}-bullet-${bulletIndex}`}>{bullet}</li>
-                  ))}
+                  {item.bullets
+                    .map((bullet) => bullet.trim())
+                    .filter(Boolean)
+                    .map((bullet, bulletIndex) => (
+                      <li key={`leadership-${index}-bullet-${bulletIndex}`}>{bullet}</li>
+                    ))}
                 </ul>
               </div>
             ))}

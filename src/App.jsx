@@ -104,10 +104,7 @@ export default function App() {
   }
 
   const handleBulletsChange = (section, index, value) => {
-    const bullets = value
-      .split('\n')
-      .map((line) => line.trim())
-      .filter(Boolean)
+    const bullets = value.split('\n')
 
     setCvData((prev) => {
       const updatedSection = [...prev[section]]
@@ -199,15 +196,18 @@ export default function App() {
       }
 
       const writeBullets = (bullets) => {
-        bullets.forEach((bullet) => {
-          const bulletLines = pdf.splitTextToSize(bullet, contentWidth - 7)
+        bullets
+          .map((bullet) => bullet.trim())
+          .filter(Boolean)
+          .forEach((bullet) => {
+              const bulletLines = pdf.splitTextToSize(bullet, contentWidth - 7)
           ensureSpace(bulletLines.length * 4 + 1)
           pdf.setFont('times', 'normal')
           pdf.setFontSize(11)
           pdf.text('\u2022', margin + 1, y)
           pdf.text(bulletLines, margin + 5, y)
           y += bulletLines.length * 4
-        })
+          })
       }
 
       writeCentered(`${cvData.firstName} ${cvData.lastName}`, 17, 'bold')
