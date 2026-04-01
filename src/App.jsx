@@ -200,13 +200,13 @@ export default function App() {
           .map((bullet) => bullet.trim())
           .filter(Boolean)
           .forEach((bullet) => {
-              const bulletLines = pdf.splitTextToSize(bullet, contentWidth - 7)
-          ensureSpace(bulletLines.length * 4 + 1)
-          pdf.setFont('times', 'normal')
-          pdf.setFontSize(11)
-          pdf.text('\u2022', margin + 1, y)
-          pdf.text(bulletLines, margin + 5, y)
-          y += bulletLines.length * 4
+            const bulletLines = pdf.splitTextToSize(bullet, contentWidth - 7)
+            ensureSpace(bulletLines.length * 4 + 1)
+            pdf.setFont('times', 'normal')
+            pdf.setFontSize(11)
+            pdf.text('\u2022', margin + 1, y)
+            pdf.text(bulletLines, margin + 5, y)
+            y += bulletLines.length * 4
           })
       }
 

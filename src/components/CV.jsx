@@ -31,18 +31,18 @@ export default function CV({
             }
 
             return (
-            <div className="cv-entry" key={`preview-education-${index}`}>
-              <div className="cv-row">
-                <strong>{item.school}</strong>
-                <span>{item.location}</span>
+              <div className="cv-entry" key={`preview-education-${index}`}>
+                <div className="cv-row">
+                  <strong>{item.school}</strong>
+                  <span>{item.location}</span>
+                </div>
+                <div className="cv-row">
+                  <span>{item.degree}</span>
+                  <span>{item.graduationDate}</span>
+                </div>
+                {item.thesis && <p>Thesis: {item.thesis}</p>}
+                {item.coursework && <p>Relevant Coursework: {item.coursework}</p>}
               </div>
-              <div className="cv-row">
-                <span>{item.degree}</span>
-                <span>{item.graduationDate}</span>
-              </div>
-              {item.thesis && <p>Thesis: {item.thesis}</p>}
-              {item.coursework && <p>Relevant Coursework: {item.coursework}</p>}
-            </div>
             )
           })}
         </section>
@@ -55,24 +55,24 @@ export default function CV({
             }
 
             return (
-            <div className="cv-entry" key={`preview-experience-${index}`}>
-              <div className="cv-row">
-                <strong>{item.organization}</strong>
-                <span>{item.location}</span>
+              <div className="cv-entry" key={`preview-experience-${index}`}>
+                <div className="cv-row">
+                  <strong>{item.organization}</strong>
+                  <span>{item.location}</span>
+                </div>
+                <div className="cv-row">
+                  <strong>{item.position}</strong>
+                  <span>{item.dates}</span>
+                </div>
+                <ul>
+                  {item.bullets
+                    .map((bullet) => bullet.trim())
+                    .filter(Boolean)
+                    .map((bullet, bulletIndex) => (
+                      <li key={`experience-${index}-bullet-${bulletIndex}`}>{bullet}</li>
+                    ))}
+                </ul>
               </div>
-              <div className="cv-row">
-                <strong>{item.position}</strong>
-                <span>{item.dates}</span>
-              </div>
-              <ul>
-                {item.bullets
-                  .map((bullet) => bullet.trim())
-                  .filter(Boolean)
-                  .map((bullet, bulletIndex) => (
-                    <li key={`experience-${index}-bullet-${bulletIndex}`}>{bullet}</li>
-                  ))}
-              </ul>
-            </div>
             )
           })}
         </section>
